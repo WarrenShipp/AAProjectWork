@@ -39,15 +39,15 @@ public class LinkedListMultiset<T> extends Multiset<T>
 		if(head == null)
 		{
 			head = node;
-			//tail = head;
-			current = head;
 		}
 		else
 		{
+			current = head;
+			while(current.next != null)
+			{
+				current = current.next;
+			}
 			current.next = node;
-			current = current.next;
-			//tail.next = node;
-			//tail = tail.next;		
 		}
 		
 	} // end of add()
