@@ -56,45 +56,47 @@ public class BstMultiset<T> extends Multiset<T>
 		}
 		else
 		{
-			System.out.println(root.key);
-			++root.count;
-			System.out.println(root.key + root.count);
+			root.count++;
+			System.out.println("dup" + root.count);
 			return root;
 		}
 		return root;
 	}
 	public int search(T item) 
 	{
-		
-		root = searchAgain(root, item);
+		Node temp = root;
+		temp = searchAgain(temp, item);
 		// Implement me!
 		// default return, please override when you implement this method
-		if(root == null)
+		if(temp == null)
 		{
+			System.out.println("error");
 			return 0;
 		}
 		else
 		{
-			return root.count;
+			return temp.count;
 		}
 	} // end of add()
 
 	public Node searchAgain(Node root, T item)
 	{
-		if(root == null)
+		if(root == null || item.toString().compareTo(root.key) == 0)
 		{
 			return root;
 		}
 		
 		if(item.toString().compareTo(root.key) < 0)
 		{
-			root.rightChild = searchAgain(root.rightChild, item);
+			System.out.println(root.key);
+			return searchAgain(root.leftChild, item);
 		}
 		else
 		{
-			 root.leftChild = searchAgain(root.leftChild, item);
+			System.out.println(root.key);
+			return searchAgain(root.rightChild, item);
 		}
-		return root;
+		
 	}
 	public void removeOne(T item)
 	{
