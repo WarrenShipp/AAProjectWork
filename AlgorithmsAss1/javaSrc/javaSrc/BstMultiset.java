@@ -88,12 +88,12 @@ public class BstMultiset<T> extends Multiset<T>
 		
 		if(item.toString().compareTo(root.key) < 0)
 		{
-			System.out.println(root.key);
+			//System.out.println(root.key);
 			return searchAgain(root.leftChild, item);
 		}
 		else
 		{
-			System.out.println(root.key);
+			//System.out.println(root.key);
 			return searchAgain(root.rightChild, item);
 		}
 		
