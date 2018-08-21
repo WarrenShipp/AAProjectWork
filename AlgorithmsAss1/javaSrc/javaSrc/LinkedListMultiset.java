@@ -1,6 +1,8 @@
 import java.io.PrintStream;
 import java.util.*;
 
+import SortedLinkedListMultiset.Node;
+
 public class LinkedListMultiset<T> extends Multiset<T>
 {
 	
@@ -151,8 +153,36 @@ public class LinkedListMultiset<T> extends Multiset<T>
 	
 	
 	public void print(PrintStream out) 
-	{
-		// Implement me!
-	} // end of print()
+	Node temp=head;
+	
+	//System.out.println("Checked");
+	
+	while(temp!=null){
+		int count = search(temp.item);
+		
+		if(temp.next==null){
+			out.println(temp.item + " | " +count);
+			temp = temp.next;
+		}
+		
+		else 
+		{
+			if (temp.item.toString().equals(temp.next.item.toString())){
+
+			temp=temp.next;
+			continue;
+			}
+			
+			else
+			{	
+				out.println(temp.item + " | " +count);
+				temp = temp.next;
+			}
+		}
+		
+		
+		
+	}
+	out.println();
 	
 } // end of class LinkedListMultiset

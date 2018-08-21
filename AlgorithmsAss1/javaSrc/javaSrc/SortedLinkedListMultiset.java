@@ -48,7 +48,7 @@ public class SortedLinkedListMultiset<T> extends Multiset<T>
 			previous = head;
 			while(current!=null){
 				if(current.item.toString().compareTo(node.item.toString())>0){
-					System.out.println("greater");
+		
 					//Node temp = current.next;
 					//current.next = node;
 					previous.next = node;
@@ -163,8 +163,27 @@ public class SortedLinkedListMultiset<T> extends Multiset<T>
 		
 		while(temp!=null){
 			int count = search(temp.item);
-			out.println(temp.item + " | " +count);
-			temp = temp.next;
+			
+			if(temp.next==null){
+				out.println(temp.item + " | " +count);
+				temp = temp.next;
+			}
+			
+			else 
+			{
+				if (temp.item.toString().equals(temp.next.item.toString())){
+	
+				temp=temp.next;
+				continue;
+				}
+				
+				else
+				{	
+					out.println(temp.item + " | " +count);
+					temp = temp.next;
+				}
+			}
+			
 			
 			
 		}
