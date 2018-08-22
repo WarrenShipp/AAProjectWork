@@ -1,8 +1,6 @@
 import java.io.PrintStream;
 import java.util.*;
 
-import SortedLinkedListMultiset.Node;
-
 public class LinkedListMultiset<T> extends Multiset<T>
 {
 	
@@ -28,7 +26,8 @@ public class LinkedListMultiset<T> extends Multiset<T>
 	{
 		Node next;
 		Node previous;
-		Object item;
+		T item;
+		Boolean printed = false;
 	
 	}
 	
@@ -68,7 +67,8 @@ public class LinkedListMultiset<T> extends Multiset<T>
 		while(current != null)
 		{
 			if(current.item.equals(item))
-			{
+			{	
+				current.printed = true;
 				count++;
 			}
 			current = current.next;
@@ -77,6 +77,15 @@ public class LinkedListMultiset<T> extends Multiset<T>
 		return count;
 	} // end of add()
 	
+	public void clearPrint()
+	{
+		current = head;
+		while(current != null)
+		{
+			current.printed = false;
+			current = current.next;
+		}
+	}
 	
 	public void removeOne(T item) 
 	{
@@ -146,43 +155,29 @@ public class LinkedListMultiset<T> extends Multiset<T>
 			current = null;
 			return;
 		}
-		
-		
-		// Implement me!
-	} // end of removeAll()
-	
-	
-	public void print(PrintStream out) 
-	Node temp=head;
-	
-	//System.out.println("Checked");
-	
-	while(temp!=null){
-		int count = search(temp.item);
-		
-		if(temp.next==null){
-			out.println(temp.item + " | " +count);
-			temp = temp.next;
-		}
-		
-		else 
-		{
-			if (temp.item.toString().equals(temp.next.item.toString())){
+	}	
 
-			temp=temp.next;
-			continue;
-			}
-			
-			else
-			{	
-				out.println(temp.item + " | " +count);
-				temp = temp.next;
-			}
-		}
-		
-		
-		
-	}
-	out.println();
+	 // end of removeAll()
 	
-} // end of class LinkedListMultiset
+	
+	public void print(PrintStream out) {
+		Node temp=head;
+		
+		//System.out.println("Checked");
+		clearPrint();
+		while(temp!=null)
+		{
+			
+			if(temp.printed == false)
+			{
+				int count = search(temp.item);
+				out.println(temp.item + "|" + count);
+				
+			}
+			temp = temp.next;
+			
+		}
+		out.println();
+	}
+}
+ // end of class LinkedListMultiset
