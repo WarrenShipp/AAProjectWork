@@ -100,19 +100,125 @@ public class BstMultiset<T> extends Multiset<T>
 	}
 	public void removeOne(T item)
 	{
+		Boolean all = false;
+		root = deleteNode(root, item, all);
+		
 		// Implement me!
-	} // end of removeOne()
+		} // end of removeOne()
 	
+	public Node deleteNode(Node temp, T item, Boolean all)
+	{
+		if(temp == null)
+		{
+			return temp;
+		}
+		if(temp.key.compareTo(item.toString()) > 0)
+		{
+			temp.leftChild = deleteNode(temp.leftChild, item, all);
+		}
+		else if(temp.key.compareTo(item.toString()) < 0)
+		{
+			temp.rightChild = deleteNode(temp.rightChild, item, all);
+		}
+		else
+		{
+			if(temp.count >= 2 && all == false)
+			{
+				temp.count--;
+			}
+			else
+			{
+				if(temp.leftChild == null && temp.rightChild == null)
+				{
+					temp = null;
+				}
+				else if(temp.rightChild == null)
+				{
+					temp = temp.leftChild;
+				}
+				else if(temp.leftChild == null)
+				{
+					temp = temp.rightChild;
+				}
+				else
+				{
+					Node minRight = findSmallestRight(temp.rightChild);
+					temp.key = minRight.key;
+					T item1 = (T) minRight.key;
+					temp.rightChild = deleteNode(temp.rightChild, item1, all);
+				}
+			}
+		}
+		return temp;
+	}
 	
+	public Node findSmallestRight(Node current)
+	{
+		while(current.leftChild != null)
+		{
+			current = current.leftChild;
+		}
+		return current;
+	}
 	public void removeAll(T item)
 	{
 		// Implement me!
+		boolean all = true;
+		root = deleteNode(root, item, all);
 	} // end of removeAll()
 
-
+	/*public Node deleteAll(Node temp, T item)
+	{
+		if(temp == null)
+		{
+			return temp;
+		}
+		if(temp.key.compareTo(item.toString()) > 0)
+		{
+			temp.leftChild = deleteNode(temp.leftChild, item);
+		}
+		else if(temp.key.compareTo(item.toString()) < 0)
+		{
+			temp.rightChild = deleteNode(temp.rightChild, item);
+		}
+		else
+		{
+			if(temp.leftChild == null && temp.rightChild == null)
+			{
+				temp = null;
+			}
+			else if(temp.rightChild == null)
+			{
+				temp = temp.leftChild;
+			}
+			else if(temp.leftChild == null)
+			{
+				temp = temp.rightChild;
+			}
+			else
+			{
+				Node minRight = findSmallestRight(temp.rightChild);
+				temp.key = minRight.key;
+				T item1 = (T) minRight.key;
+				temp.rightChild = deleteNode(temp.rightChild, item1);
+		}
+			
+		}
+		return temp;
+	}*/
 	public void print(PrintStream out)
 	{
+		printData(root);
+		out.println();
 		// Implement me!
 	} // end of print()
-
+	public void printData(Node current)
+	{
+		if(current != null)
+		{
+			printData(current.leftChild);
+			System.out.println(current.key + " | " + current.count);
+			printData(current.rightChild);
+		}
+	}
 } // end of class BstMultiset
