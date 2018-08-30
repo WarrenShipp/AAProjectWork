@@ -144,6 +144,8 @@ public class BstMultiset<T> extends Multiset<T>
 				{
 					Node minRight = findSmallestRight(temp.rightChild);
 					temp.key = minRight.key;
+					temp.count = minRight.count;
+					@SuppressWarnings("unchecked")
 					T item1 = (T) minRight.key;
 					temp.rightChild = deleteNode(temp.rightChild, item1, all);
 				}
