@@ -16,26 +16,32 @@ public class DataGenerator
 	{
 		Scanner kb = new Scanner(System.in);
 		//System.out.println("Enter number of words: ");
-		int words = 10;
+		int words = 100;
 	//	System.out.println("Enter file name: ");
-		String fileName = "test.in";
+		String fileName = "addrem100.in";
 		Random ran = new Random();
-		
+		int count = 0;
+		int addedWords = 0;
 		try
 		{
 			PrintWriter writer = new PrintWriter(new FileOutputStream(fileName), true);
-			for(int i = 0; i < words; i++ )
+			while(addedWords < words)
 			{
 				int number = ran.nextInt(20)+1;
-				System.out.println(number);
+				
 				int num = ran.nextInt(2)+1;
+				//int num = 1;
 				switch(num)
 				{
 				case 1:
 					data.add("a");
+					addedWords++;
 					break;
 				case 2:
 					data.add("ro");
+					break;
+				case 3:
+					data.add("s");
 					break;
 				}
 				switch(number)
@@ -104,8 +110,18 @@ public class DataGenerator
 			}
 			for(int i = 0; i < data.size(); i++)
 			{
-				writer.print(data.get(i));
-				System.out.println(data.get(i));
+				
+				if(count == 0)
+				{
+					writer.print(data.get(i));
+					count++;
+				}
+				else
+				{
+					writer.println(data.get(i));
+					count = 0;
+				}
+				//System.out.println(data.get(i));
 			}
 			writer.close();
 		}
