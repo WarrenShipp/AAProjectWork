@@ -16,9 +16,9 @@ public class DataGenerator
 	{
 		Scanner kb = new Scanner(System.in);
 		//System.out.println("Enter number of words: ");
-		int words = 100;
+		int words = 1000;
 	//	System.out.println("Enter file name: ");
-		String fileName = "addrem100.in";
+		String fileName = "addrem1000.in";
 		Random ran = new Random();
 		int count = 0;
 		int addedWords = 0;
