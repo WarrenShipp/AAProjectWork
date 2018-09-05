@@ -18,10 +18,11 @@ public class DataGenerator
 		//System.out.println("Enter number of words: ");
 		int words = 5000;
 	//	System.out.println("Enter file name: ");
-		String fileName = "rem5000.in";
+		String fileName = "addremsea5000.in";
 		Random ran = new Random();
 		int count = 0;
 		int addedWords = 0;
+		int searchWords = 0;
 		try
 		{
 			PrintWriter writer = new PrintWriter(new FileOutputStream(fileName), true);
@@ -29,20 +30,27 @@ public class DataGenerator
 			{
 				int number = ran.nextInt(20)+1;
 				
-				//int num = ran.nextInt(2)+1;
-				int num = 2;
+				int num = ran.nextInt(3)+1;
+
+				if(searchWords == 0)
+				{
+					num = 3;
+				}
 				switch(num)
 				{
 				case 1:
 					data.add("a");
-					//addedWords++;
+					addedWords++;
+					searchWords = 0;
 					break;
 				case 2:
 					data.add("ro");
-					addedWords++;
+					searchWords = 0;
+					//addedWords++;
 					break;
 				case 3:
 					data.add("s");
+					searchWords = 1;
 					break;
 				}
 				switch(number)
