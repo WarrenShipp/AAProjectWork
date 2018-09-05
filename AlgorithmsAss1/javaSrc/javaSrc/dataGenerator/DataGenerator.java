@@ -16,9 +16,9 @@ public class DataGenerator
 	{
 		Scanner kb = new Scanner(System.in);
 		//System.out.println("Enter number of words: ");
-		int words = 1000;
+		int words = 5000;
 	//	System.out.println("Enter file name: ");
-		String fileName = "addrem1000.in";
+		String fileName = "rem5000.in";
 		Random ran = new Random();
 		int count = 0;
 		int addedWords = 0;
@@ -29,16 +29,17 @@ public class DataGenerator
 			{
 				int number = ran.nextInt(20)+1;
 				
-				int num = ran.nextInt(2)+1;
-				//int num = 1;
+				//int num = ran.nextInt(2)+1;
+				int num = 2;
 				switch(num)
 				{
 				case 1:
 					data.add("a");
-					addedWords++;
+					//addedWords++;
 					break;
 				case 2:
 					data.add("ro");
+					addedWords++;
 					break;
 				case 3:
 					data.add("s");
