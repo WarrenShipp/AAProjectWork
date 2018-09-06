@@ -16,9 +16,9 @@ public class DataGenerator
 	{
 		Scanner kb = new Scanner(System.in);
 		//System.out.println("Enter number of words: ");
-		int words = 5000;
+		int words = 50000;
 	//	System.out.println("Enter file name: ");
-		String fileName = "addremsea5000.in";
+		String fileName = "addremsea50000-40.in";
 		Random ran = new Random();
 		int count = 0;
 		int addedWords = 0;
@@ -28,7 +28,7 @@ public class DataGenerator
 			PrintWriter writer = new PrintWriter(new FileOutputStream(fileName), true);
 			while(addedWords < words)
 			{
-				int number = ran.nextInt(20)+1;
+				int number = ran.nextInt(40)+1;
 				
 				int num = ran.nextInt(3)+1;
 
@@ -114,6 +114,66 @@ public class DataGenerator
 					break;
 				case 20:
 					data.add(" rooster");
+					break;
+				case 21:
+					data.add(" catx");
+					break;
+				case 22:
+					data.add(" dogx");
+					break;
+				case 23:
+					data.add(" fishx");
+					break;
+				case 24:
+					data.add(" horsex");
+					break;
+				case 25:
+					data.add(" goatx");
+					break;
+				case 26:
+					data.add(" goosex");
+					break;
+				case 27:
+					data.add(" chickenx");
+					break;
+				case 28:
+					data.add(" lambx");
+					break;
+				case 29:
+					data.add(" cowx");
+					break;
+				case 30:
+					data.add(" elephantx");
+					break;
+				case 31:
+					data.add(" camelx");
+					break;
+				case 32:
+					data.add(" donkeyx");
+					break;
+				case 33:
+					data.add(" monkeyx");
+					break;
+				case 34:
+					data.add(" rhinox");
+					break;
+				case 35:
+					data.add(" tiger");
+					break;
+				case 36:
+					data.add(" lionx");
+					break;
+				case 37:
+					data.add(" giraffex");
+					break;
+				case 38:
+					data.add(" hippox");
+					break;
+				case 39:
+					data.add(" zebrax");
+					break;
+				case 40:
+					data.add(" roosterx");
 					break;
 				}
 			}
