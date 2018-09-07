@@ -165,7 +165,13 @@ public class MultisetTester
 				searchOutWriter = new PrintWriter(new FileWriter(searchOutFilename), true);
 			}
 			// process the operations
+			long start = System.nanoTime();
 			processOperations(inReader, searchOutWriter, multiset);
+			long end = System.nanoTime();
+			
+			double estimatedTime=((double)(end-start)) / Math.pow(10,9) ;
+			System.out.println("Time taken: " + estimatedTime + " seconds.");
+			
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
